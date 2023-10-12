@@ -25,9 +25,55 @@ const Editor = (props) => {
     setValues(tempValues);
   };
 
+  const basicInfoBody = (
+    <div className="">
+      <div className="flex gap-5">
+        <InputControl
+          label="Name"
+          placeholder="Enter your full name eg. Aashu"
+          value={values.name}
+          onChange={(e) => setValues((prev) => ({ ...prev, name: e.target.value }))}
+        />
+        <InputControl
+          label="Title"
+          value={values.title}
+          placeholder="Enter your title eg. Frontend developer"
+          onChange={(e) => setValues((prev) => ({ ...prev, title: e.target.value }))}
+        />
+      </div>
+      <div className="flex gap-5">
+        <InputControl
+          label="Linkedin Link"
+          value={values.linkedin}
+          placeholder="Enter your linkedin profile link"
+          onChange={(e) => setValues((prev) => ({ ...prev, linkedin: e.target.value }))}
+        />
+        <InputControl
+          label="Github Link"
+          value={values.github}
+          placeholder="Enter your github profile link"
+          onChange={(e) => setValues((prev) => ({ ...prev, github: e.target.value }))}
+        />
+      </div>
+      <div className="flex gap-5">
+        <InputControl
+          label="Email"
+          value={values.email}
+          placeholder="Enter your email"
+          onChange={(e) => setValues((prev) => ({ ...prev, email: e.target.value }))}
+        />
+        <InputControl
+          label="Enter phone"
+          value={values.phone}
+          placeholder="Enter your phone number"
+          onChange={(e) => setValues((prev) => ({ ...prev, phone: e.target.value }))}
+        />
+      </div>
+    </div>
+  );
   const workExpBody = (
-    <div className={""}>
-      <div className={""}>
+    <div className="">
+      <div className="flex gap-5">
         <InputControl
           label="Title"
           placeholder="Enter title eg. Frontend developer"
@@ -41,7 +87,7 @@ const Editor = (props) => {
           onChange={(e) => setValues((prev) => ({ ...prev, companyName: e.target.value }))}
         />
       </div>
-      <div className={""}>
+      <div className="flex gap-5">
         <InputControl
           label="Certificate Link"
           placeholder="Enter certificate link"
@@ -60,7 +106,7 @@ const Editor = (props) => {
           onChange={(e) => setValues((prev) => ({ ...prev, location: e.target.value }))}
         />
       </div>
-      <div className={""}>
+      <div className="flex gap-5">
         <InputControl
           label="Start Date"
           type="date"
@@ -77,8 +123,8 @@ const Editor = (props) => {
         />
       </div>
 
-      <div className={""}>
-        <label>Enter work description</label>
+      <div className="">
+        <label className="font-medium">Enter work description</label>
         <InputControl
           placeholder="Line 1"
           value={values.points ? values.points[0] : ""}
@@ -98,22 +144,22 @@ const Editor = (props) => {
     </div>
   );
   const projectBody = (
-    <div className={""}>
-      <div className={""}>
+    <div className="">
+      <div className="flex gap-5">
         <InputControl
           label="Title"
           value={values.title}
           placeholder="Enter title eg. Chat app"
           onChange={(e) => setValues((prev) => ({ ...prev, title: e.target.value }))}
         />
+        <InputControl
+          label="Overview"
+          value={values.overview}
+          placeholder="Enter basic overview of project"
+          onChange={(e) => setValues((prev) => ({ ...prev, overview: e.target.value }))}
+        />
       </div>
-      <InputControl
-        label="Overview"
-        value={values.overview}
-        placeholder="Enter basic overview of project"
-        onChange={(e) => setValues((prev) => ({ ...prev, overview: e.target.value }))}
-      />
-      <div className={""}>
+      <div className="flex gap-5">
         <InputControl
           label="Deployed Link"
           value={values.link}
@@ -127,8 +173,8 @@ const Editor = (props) => {
           onChange={(e) => setValues((prev) => ({ ...prev, github: e.target.value }))}
         />
       </div>
-      <div className={""}>
-        <label>Enter project description</label>
+      <div className="mt-3">
+        <label className="font-medium">Enter project description</label>
         <InputControl
           placeholder="Line 1"
           value={values.points ? values.points[0] : ""}
@@ -153,8 +199,8 @@ const Editor = (props) => {
     </div>
   );
   const educationBody = (
-    <div className={""}>
-      <div className={""}>
+    <div className="">
+      <div className="">
         <InputControl
           label="Title"
           value={values.title}
@@ -168,7 +214,7 @@ const Editor = (props) => {
         placeholder="Enter name of your college/school"
         onChange={(e) => setValues((prev) => ({ ...prev, college: e.target.value }))}
       />
-      <div className={""}>
+      <div className="">
         <InputControl
           label="Start Date"
           type="date"
@@ -186,56 +232,10 @@ const Editor = (props) => {
       </div>
     </div>
   );
-  const basicInfoBody = (
-    <div className={""}>
-      <div className={""}>
-        <InputControl
-          label="Name"
-          placeholder="Enter your full name eg. Aashu"
-          value={values.name}
-          onChange={(e) => setValues((prev) => ({ ...prev, name: e.target.value }))}
-        />
-        <InputControl
-          label="Title"
-          value={values.title}
-          placeholder="Enter your title eg. Frontend developer"
-          onChange={(e) => setValues((prev) => ({ ...prev, title: e.target.value }))}
-        />
-      </div>
-      <div className={""}>
-        <InputControl
-          label="Linkedin Link"
-          value={values.linkedin}
-          placeholder="Enter your linkedin profile link"
-          onChange={(e) => setValues((prev) => ({ ...prev, linkedin: e.target.value }))}
-        />
-        <InputControl
-          label="Github Link"
-          value={values.github}
-          placeholder="Enter your github profile link"
-          onChange={(e) => setValues((prev) => ({ ...prev, github: e.target.value }))}
-        />
-      </div>
-      <div className={""}>
-        <InputControl
-          label="Email"
-          value={values.email}
-          placeholder="Enter your email"
-          onChange={(e) => setValues((prev) => ({ ...prev, email: e.target.value }))}
-        />
-        <InputControl
-          label="Enter phone"
-          value={values.phone}
-          placeholder="Enter your phone number"
-          onChange={(e) => setValues((prev) => ({ ...prev, phone: e.target.value }))}
-        />
-      </div>
-    </div>
-  );
   const achievementsBody = (
-    <div className={""}>
-      <div className={""}>
-        <label>List your achievements</label>
+    <div className="">
+      <div className="">
+        <label  className="font-medium">List your achievements</label>
         <InputControl
           placeholder="Line 1"
           value={values.points ? values.points[0] : ""}
@@ -260,7 +260,7 @@ const Editor = (props) => {
     </div>
   );
   const summaryBody = (
-    <div className={""}>
+    <div className="">
       <InputControl
         label="Summary"
         value={values.summary}
@@ -270,7 +270,7 @@ const Editor = (props) => {
     </div>
   );
   const otherBody = (
-    <div className={""}>
+    <div className="">
       <InputControl
         label="Other"
         value={values.other}
@@ -302,7 +302,6 @@ const Editor = (props) => {
   };
 
   const handleSubmission = () => {
-    console.log(values);
     switch (sections[activeSectionKey]) {
       case sections.basicInfo: {
         const tempDetail = {
@@ -430,6 +429,38 @@ const Editor = (props) => {
     }
   };
 
+  const handleAddNew = () => {
+    const details = activeInformation?.details;
+    if (!details) return;
+    const lastDetail = details.slice(-1)[0];
+    if (!Object.keys(lastDetail).length) return;
+    details?.push({});
+
+    props.setInformation((prev) => ({
+      ...prev,
+      [sections[activeSectionKey]]: {
+        ...information[sections[activeSectionKey]],
+        details: details,
+      },
+    }));
+    setActiveDetailIndex(details?.length - 1);
+  };
+
+  const handleDeleteDetail = (index) => {
+    const details = activeInformation?.details ? [...activeInformation?.details] : "";
+    if (!details) return;
+    details.splice(index, 1);
+    props.setInformation((prev) => ({
+      ...prev,
+      [sections[activeSectionKey]]: {
+        ...information[sections[activeSectionKey]],
+        details: details,
+      },
+    }));
+
+    setActiveDetailIndex((prev) => (prev === index ? 0 : prev - 1));
+  };
+
   useEffect(() => {
     const activeInfo = information[sections[activeSectionKey]];
     setActiveInformation(activeInfo);
@@ -466,12 +497,35 @@ const Editor = (props) => {
     setActiveInformation(information[sections[activeSectionKey]]);
   }, [information]);
 
+  useEffect(() => {
+    const details = activeInformation?.details;
+    if (!details) return;
+
+    const activeInfo = information[sections[activeSectionKey]];
+    setValues({
+      overview: activeInfo.details[activeDetailIndex]?.overview || "",
+      link: activeInfo.details[activeDetailIndex]?.link || "",
+      certificationLink: activeInfo.details[activeDetailIndex]?.certificationLink || "",
+      companyName: activeInfo.details[activeDetailIndex]?.companyName || "",
+      location: activeInfo.details[activeDetailIndex]?.location || "",
+      startDate: activeInfo.details[activeDetailIndex]?.startDate || "",
+      endDate: activeInfo.details[activeDetailIndex]?.endDate || "",
+      points: activeInfo.details[activeDetailIndex]?.points || "",
+      title: activeInfo.details[activeDetailIndex]?.title || "",
+      linkedin: activeInfo.details[activeDetailIndex]?.linkedin || "",
+      github: activeInfo.details[activeDetailIndex]?.github || "",
+      college: activeInfo.details[activeDetailIndex]?.college || "",
+    });
+  }, [activeDetailIndex]);
+
   return (
-    <div className="mt-6 mb-4 bg-slate-300">
-      <div className="flex justify-center gap-7 py-3">
+    <div className="mt-6 min-h-[85vh] w-[80vw] mx-auto mb-4 bg-slate-50 border">
+      <div className="flex justify-center gap-5 py-3 bg-slate-200">
         {Object.keys(sections).map((key) => (
           <div
-            className={`${activeSectionKey === key ? "bg-slate-700" : ""} py-2 px-7 cursor-pointer`}
+            className={`cursor-pointer py-2 px-4 font-medium ${
+              activeSectionKey === key ? "bg-orange-500 text-white" : ""
+            }`}
             key={key}
             onClick={() => setActiveSectionKey(key)}
           >
@@ -479,7 +533,7 @@ const Editor = (props) => {
           </div>
         ))}
       </div>
-      <div>
+      <div className="m-5">
         <InputControl
           label="Title"
           placeholder="Enter section title"
@@ -487,24 +541,34 @@ const Editor = (props) => {
           onChange={(event) => setSectionTitle(event.target.value)}
         />
 
-        <div className={""}>
+        <div className="">
           {activeInformation?.details
-            ? activeInformation?.details?.map((item, index) => (
+            ? activeInformation.details.map((item, index) => (
                 <div
-                  className={` ${activeDetailIndex === index ? "" : ""}`}
+                  className={`${
+                    activeDetailIndex === index ? "bg-orange-500  text-white" : ""
+                  } py-[6px] px-2 mb-2 flex gap-3 justify-between w-fit`}
                   key={item.title + index}
                   onClick={() => setActiveDetailIndex(index)}
                 >
                   <p>
                     {sections[activeSectionKey]} {index + 1}
                   </p>
-                <span>X</span>
+                  <span
+                    onClick={(event) => {
+                      event.stopPropagation();
+                      handleDeleteDetail(index);
+                    }}
+                    className="cursor-pointer text-slate-600 px-2 bg-slate-300"
+                  >
+                    X
+                  </span>
                 </div>
               ))
             : ""}
-          {activeInformation?.details && activeInformation?.details?.length > 0 ? (
-            <div className={""} >
-              +New
+          {activeInformation?.details && activeInformation.details.length > 0 ? (
+            <div className="cursor-pointer text-white w-[80px] py-1 bg-green-500  px-2 font-medium " onClick={handleAddNew}>
+              + New
             </div>
           ) : (
             ""
@@ -512,7 +576,7 @@ const Editor = (props) => {
         </div>
 
         {generateBody()}
-        <button onClick={handleSubmission} className="py-4 px-7 bg-orange-500">
+        <button onClick={handleSubmission} className="py-2 mt-2 px-7 bg-orange-500 text-white">
           Save
         </button>
       </div>
