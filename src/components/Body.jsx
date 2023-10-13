@@ -5,9 +5,8 @@ import Editor from "./Editor";
 import Resume from "./Resume";
 
 const Body = () => {
-  const colors = ["#ed8936", "#239ce2", "#48bb78", "#0bc5ea", "#4F4FDA", "#a0aec0"];
-  const [activeColor, setActiveColor] = useState(colors[0]);
-  const componentRef = useRef(null);
+  const colors = ["#239ce2", "#48bb78", "#0bc5ea", "#a0aec0", "#ed8936"];
+
   const sections = {
     basicInfo: "Basic Info",
     workExp: "Work Experience",
