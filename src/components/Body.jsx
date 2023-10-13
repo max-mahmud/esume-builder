@@ -3,7 +3,7 @@ import { BsDownload } from "react-icons/bs";
 import Editor from "./Editor";
 
 const Body = () => {
-  const colors = ["#239ce2", "#48bb78", "#0bc5ea", "#a0aec0", "#ed8936"];
+  const colors = ["#239ce2", "#48bb78", "#0bc5ea",'#4F4FDA', "#a0aec0", "#ed8936"];
 
   const sections = {
     basicInfo: "Basic Info",
