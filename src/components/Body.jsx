@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { BsDownload } from "react-icons/bs";
+import ReactToPrint from "react-to-print";
 import Editor from "./Editor";
+import Resume from "./Resume";
 
 const Body = () => {
-  const colors = ["#239ce2", "#48bb78", "#0bc5ea",'#4F4FDA', "#a0aec0", "#ed8936"];
-
+  const colors = ["#ed8936", "#239ce2", "#48bb78", "#0bc5ea", "#4F4FDA", "#a0aec0"];
+  const [activeColor, setActiveColor] = useState(colors[0]);
+  const componentRef = useRef(null);
   const sections = {
     basicInfo: "Basic Info",
     workExp: "Work Experience",
@@ -53,9 +56,7 @@ const Body = () => {
     },
   });
 
-  useEffect(() => {
-    console.log(resumeInformation);
-  }, [resumeInformation]);
+  useEffect(() => {}, [resumeInformation]);
   return (
     <div className="my-6 container mx-auto">
       <h4 className="text-center text-4xl font-medium">Resume Builder</h4>
@@ -63,6 +64,7 @@ const Body = () => {
         <div>
           {colors.map((c, i) => (
             <span
+              onClick={() => setActiveColor(c)}
               key={i}
               style={{ background: c }}
               className="inline-block w-8 h-8 rounded-full border border-orange-100 mx-2"
@@ -70,13 +72,26 @@ const Body = () => {
           ))}
         </div>
         <div>
-          <button className="px-5 py-2 flex justify-between text-white rounded-sm bg-blue-500">
-            Download <BsDownload />
-          </button>
+          <ReactToPrint
+            trigger={() => {
+              return (
+                <button className="px-5 py-2 flex justify-between text-white rounded-sm bg-blue-500">
+                  Download <BsDownload />
+                </button>
+              );
+            }}
+            content={() => componentRef.current}
+          />
         </div>
       </div>
       <div>
         <Editor sections={sections} information={resumeInformation} setInformation={setResumeInformation} />
+        <Resume
+          ref={componentRef}
+          information={resumeInformation}
+          sections={sections}
+          activeColor={activeColor}
+        />
       </div>
     </div>
   );

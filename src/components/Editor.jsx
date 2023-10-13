@@ -235,7 +235,7 @@ const Editor = (props) => {
   const achievementsBody = (
     <div className="">
       <div className="">
-        <label  className="font-medium">List your achievements</label>
+        <label className="font-medium">List your achievements</label>
         <InputControl
           placeholder="Line 1"
           value={values.points ? values.points[0] : ""}
@@ -519,12 +519,12 @@ const Editor = (props) => {
   }, [activeDetailIndex]);
 
   return (
-    <div className="mt-6 min-h-[85vh] w-[80vw] mx-auto mb-4 bg-slate-50 border">
-      <div className="flex justify-center gap-5 py-3 bg-slate-200">
+    <div className="mt-6 min-h-[85vh] w-[80vw] mx-auto mb-4 bg-slate-50/50 border shadow-md">
+      <div className="flex justify-center gap-7  bg-slate-100">
         {Object.keys(sections).map((key) => (
           <div
-            className={`cursor-pointer py-2 px-4 font-medium ${
-              activeSectionKey === key ? "bg-orange-500 text-white" : ""
+            className={`cursor-pointer text-center py-3 px-1 font-medium ${
+              activeSectionKey === key ? "text-orange-500 border-b-2 border-orange-500" : ""
             }`}
             key={key}
             onClick={() => setActiveSectionKey(key)}
@@ -567,7 +567,10 @@ const Editor = (props) => {
               ))
             : ""}
           {activeInformation?.details && activeInformation.details.length > 0 ? (
-            <div className="cursor-pointer text-white w-[80px] py-1 bg-green-500  px-2 font-medium " onClick={handleAddNew}>
+            <div
+              className="cursor-pointer text-white w-[80px] py-1 bg-green-500  px-2 font-medium "
+              onClick={handleAddNew}
+            >
               + New
             </div>
           ) : (
