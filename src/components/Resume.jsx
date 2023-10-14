@@ -17,8 +17,8 @@ const Resume = React.forwardRef((props, ref) => {
 
   const [columns, setColumns] = useState([[], []]);
   const [source, setSource] = useState("");
-  const [target, seTarget] = useState("");
-
+  const [target, setTarget] = useState("");
+  Resume.displayName = "Resume";
   const info = {
     workExp: information[sections.workExp],
     project: information[sections.project],
@@ -41,19 +41,22 @@ const Resume = React.forwardRef((props, ref) => {
       <div
         key={"workexp"}
         draggable
-        style={{ color: activeColor }}
-        onDragOver={() => seTarget(info.workExp?.id)}
+        onDragOver={() => setTarget(info.workExp?.id)}
         onDragEnd={() => setSource(info.workExp?.id)}
-        className={`${info.workExp?.sectionTitle ? "" : "hidden"}`}
+        className={`${info.workExp?.sectionTitle ? "" : "hidden"} mb-2 `}
       >
-        <div className="">{info.workExp.sectionTitle}</div>
+        <div className="resume-header">{info.workExp.sectionTitle}</div>
         <div className="">
           {info.workExp?.details?.map((item) => (
             <div className="" key={item.title}>
-              {item.title ? <p className="">{item.title}</p> : <span />}
+              {item.title ? <p className="font-medium text-lg mt-1 capitalize">{item.title}</p> : <span />}
               {item.companyName ? <p className="">{item.companyName}</p> : <span />}
               {item.certificationLink ? (
-                <a className="" href={item.certificationLink}>
+                <a
+                  style={{ color: activeColor }}
+                  className="flex gap-1 items-center"
+                  href={item.certificationLink}
+                >
                   <AiOutlinePaperClip />
                   {item.certificationLink}
                 </a>
@@ -61,23 +64,23 @@ const Resume = React.forwardRef((props, ref) => {
                 <span />
               )}
               {item.startDate && item.endDate ? (
-                <div className="">
+                <div className="flex gap-1 items-center">
                   <AiFillCalendar /> {getFormattedDate(item.startDate)}-{getFormattedDate(item.endDate)}
                 </div>
               ) : (
                 <div />
               )}
               {item.location ? (
-                <p className="">
-                  <BiMapPin /> Remote
+                <p className="flex gap-1 items-center">
+                  <BiMapPin /> {item.location}
                 </p>
               ) : (
                 <span />
               )}
               {item.points?.length > 0 ? (
-                <ul className="">
+                <ul className="ml-5">
                   {item.points?.map((elem, index) => (
-                    <li className="" key={elem + index}>
+                    <li className="list-disc" key={elem + index}>
                       {elem}
                     </li>
                   ))}
@@ -94,18 +97,17 @@ const Resume = React.forwardRef((props, ref) => {
       <div
         key={"project"}
         draggable
-        style={{ color: activeColor }}
-        onDragOver={() => seTarget(info.project?.id)}
+        onDragOver={() => setTarget(info.project?.id)}
         onDragEnd={() => setSource(info.project?.id)}
-        className={` ${info.project?.sectionTitle ? "" : "hidden"}`}
+        className={`  ${info.project?.sectionTitle ? "" : "hidden"} mb-2`}
       >
-        <div className="">{info.project.sectionTitle}</div>
+        <div className="resume-header">{info.project.sectionTitle}</div>
         <div className="">
           {info.project?.details?.map((item) => (
             <div className="" key={item}>
-              {item.title ? <p className="">{item.title}</p> : <span />}
+              {item.title ? <p className="capitalize text-lg mt-1 font-medium">{item.title}</p> : <span />}
               {item.link ? (
-                <a className="" href={item.link}>
+                <a style={{ color: activeColor }} className="flex gap-1 items-center" href={item.link}>
                   <AiOutlinePaperClip />
                   {item.link}
                 </a>
@@ -113,7 +115,7 @@ const Resume = React.forwardRef((props, ref) => {
                 <span />
               )}
               {item.github ? (
-                <a className="" href={item.github}>
+                <a style={{ color: activeColor }} className="flex gap-1 items-center" href={item.github}>
                   <AiFillGithub />
                   {item.github}
                 </a>
@@ -122,9 +124,9 @@ const Resume = React.forwardRef((props, ref) => {
               )}
               {item.overview ? <p className="">{item.overview} </p> : <span />}
               {item.points?.length > 0 ? (
-                <ul className="">
+                <ul className="ml-5">
                   {item.points?.map((elem, index) => (
-                    <li className="" key={elem + index}>
+                    <li className="list-disc" key={elem + index}>
                       {elem}
                     </li>
                   ))}
@@ -141,18 +143,18 @@ const Resume = React.forwardRef((props, ref) => {
       <div
         key={"education"}
         draggable
-        onDragOver={() => seTarget(info.education?.id)}
+        onDragOver={() => setTarget(info.education?.id)}
         onDragEnd={() => setSource(info.education?.id)}
-        className={` ${info.education?.sectionTitle ? "" : styles.hidden}`}
+        className={` ${info.education?.sectionTitle ? "" : "hidden"} mb-2`}
       >
-        <div className="">{info.education?.sectionTitle}</div>
+        <div className="resume-header">{info.education?.sectionTitle}</div>
         <div className="">
           {info.education?.details?.map((item) => (
             <div className="" key={item}>
-              {item.title ? <p className="">{item.title}</p> : <span />}
+              {item.title ? <p className="font-medium text-lg">{item.title}</p> : <span />}
               {item.college ? <p className="">{item.college}</p> : <span />}
               {item.startDate && item.endDate ? (
-                <div className="">
+                <div className="flex gap-1 items-center">
                   <AiFillCalendar /> {getFormattedDate(item.startDate)} -{getFormattedDate(item.endDate)}
                 </div>
               ) : (
@@ -167,16 +169,16 @@ const Resume = React.forwardRef((props, ref) => {
       <div
         key={"achievement"}
         draggable
-        onDragOver={() => seTarget(info.achievement?.id)}
+        onDragOver={() => setTarget(info.achievement?.id)}
         onDragEnd={() => setSource(info.achievement?.id)}
-        className={` ${info.achievement?.sectionTitle ? "" : "hidden"}`}
+        className={` ${info.achievement?.sectionTitle ? "" : "hidden"} mb-2`}
       >
-        <div className="">{info.achievement?.sectionTitle}</div>
+        <div className="resume-header">{info.achievement?.sectionTitle}</div>
         <div className="">
           {info.achievement?.points?.length > 0 ? (
-            <ul className="">
+            <ul className="ml-5">
               {info.achievement?.points?.map((elem, index) => (
-                <li className="" key={elem + index}>
+                <li className="list-decimal" key={elem + index}>
                   {elem}
                 </li>
               ))}
@@ -191,11 +193,11 @@ const Resume = React.forwardRef((props, ref) => {
       <div
         key={"summary"}
         draggable
-        onDragOver={() => seTarget(info.summary?.id)}
+        onDragOver={() => setTarget(info.summary?.id)}
         onDragEnd={() => setSource(info.summary?.id)}
-        className={` ${info.summary?.sectionTitle ? "" : "hidden"}`}
+        className={` ${info.summary?.sectionTitle ? "" : "hidden"} mb-2`}
       >
-        <div className="">{info.summary?.sectionTitle}</div>
+        <div className="resume-header">{info.summary?.sectionTitle}</div>
         <div className="">
           <p className="">{info.summary?.detail}</p>
         </div>
@@ -205,11 +207,11 @@ const Resume = React.forwardRef((props, ref) => {
       <div
         key={"other"}
         draggable
-        onDragOver={() => seTarget(info.other?.id)}
+        onDragOver={() => setTarget(info.other?.id)}
         onDragEnd={() => setSource(info.other?.id)}
-        className={` ${info.other?.sectionTitle ? "" : "hidden"}`}
+        className={` ${info.other?.sectionTitle ? "" : "hidden"} mb-2`}
       >
-        <div className="">{info.other?.sectionTitle}</div>
+        <div className="resume-header">{info.other?.sectionTitle}</div>
         <div className="">
           <p className="">{info?.other?.detail}</p>
         </div>
@@ -254,45 +256,40 @@ const Resume = React.forwardRef((props, ref) => {
     swapSourceTarget(source, target);
   }, [source]);
 
-  //   useEffect(() => {
-  //     const container = containerRef.current;
-  //     if (!props.activeColor || !container) return;
-
-  //     container.style.setProperty("--color", props.activeColor);
-  //   }, [props.activeColor]);
-  // props.componentRef
   return (
     <div>
-      <div ref={ref} className="">
-        <div className="header">
-          <p className="heading">{info.basicInfo?.detail?.name}</p>
-          <p className={"subHeading"}>{info.basicInfo?.detail?.title}</p>
+      <div ref={ref} className="w-[800px] border mx-auto min-h-screen p-5 shadow-md">
+        <div className=" mb-3">
+          <p className="capitalize text-4xl font-medium">{info.basicInfo?.detail?.name}</p>
+          <p style={{ color: activeColor }} className={"capitalize text-xl"}>
+            {info.basicInfo?.detail?.title}
+          </p>
 
-          <div className={"links"}>
+          <div className={"flex flex-wrap justify-between"}>
             {info.basicInfo?.detail?.email ? (
-              <a className="" type="email">
-                <AiTwotoneMail /> {info.basicInfo?.detail?.email}
+              <a className="flex  justify-between items-center gap-1" type="email">
+                <AiTwotoneMail style={{ color: activeColor }} /> {info.basicInfo?.detail?.email}
               </a>
             ) : (
               <span />
             )}
             {info.basicInfo?.detail?.phone ? (
-              <a className="">
-                <AiFillPhone /> {info.basicInfo?.detail?.phone}
+              <a className="flex justify-between items-center gap-1">
+                <AiFillPhone style={{ color: activeColor }} /> {info.basicInfo?.detail?.phone}
               </a>
             ) : (
               <span />
             )}
             {info.basicInfo?.detail?.linkedin ? (
-              <a className="">
-                <AiFillLinkedin /> {info.basicInfo?.detail?.linkedin}
+              <a className="flex justify-between items-center gap-1">
+                <AiFillLinkedin style={{ color: activeColor }} /> {info.basicInfo?.detail?.linkedin}
               </a>
             ) : (
               <span />
             )}
             {info.basicInfo?.detail?.github ? (
-              <a className="">
-                <AiFillGithub /> {info.basicInfo?.detail?.github}
+              <a className="flex justify-between items-center gap-1">
+                <AiFillGithub style={{ color: activeColor }} /> {info.basicInfo?.detail?.github}
               </a>
             ) : (
               <span />
@@ -300,9 +297,9 @@ const Resume = React.forwardRef((props, ref) => {
           </div>
         </div>
 
-        <div>
-          <div>{columns[0].map((item) => sectionDiv[item])}</div>
-          <div>{columns[1].map((item) => sectionDiv[item])}</div>
+        <div className="flex  gap-4">
+          <div className="w-full">{columns[0].map((item) => sectionDiv[item])}</div>
+          <div className="w-full">{columns[1].map((item) => sectionDiv[item])}</div>
         </div>
       </div>
     </div>

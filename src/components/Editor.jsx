@@ -546,8 +546,8 @@ const Editor = (props) => {
             ? activeInformation.details.map((item, index) => (
                 <div
                   className={`${
-                    activeDetailIndex === index ? "bg-orange-500  text-white" : ""
-                  } py-[6px] px-2 mb-2 flex gap-3 justify-between w-fit`}
+                    activeDetailIndex === index ? "bg-orange-500  text-white" : " bg-slate-200"
+                  } py-[6px] px-2 mb-2 flex gap-3 justify-between w-fit cursor-pointer`}
                   key={item.title + index}
                   onClick={() => setActiveDetailIndex(index)}
                 >

@@ -5,8 +5,9 @@ import Editor from "./Editor";
 import Resume from "./Resume";
 
 const Body = () => {
-  const colors = ["#239ce2", "#48bb78", "#0bc5ea", "#a0aec0", "#ed8936"];
-
+  const colors = ["#ed8936", "#239ce2", "#5857F9 ", "#48bb78", "#0bc5ea", "#a0aec0"];
+  const componentRef = useRef();
+  const [activeColor, setActiveColor] = useState(colors[0]);
   const sections = {
     basicInfo: "Basic Info",
     workExp: "Work Experience",
@@ -66,7 +67,9 @@ const Body = () => {
               onClick={() => setActiveColor(c)}
               key={i}
               style={{ background: c }}
-              className="inline-block w-8 h-8 rounded-full border border-orange-100 mx-2"
+              className={` ${
+                activeColor === c ? "border-2 border-black" : ""
+              } inline-block w-8 h-8 rounded-full border border-orange-100 mx-2`}
             ></span>
           ))}
         </div>
@@ -74,7 +77,7 @@ const Body = () => {
           <ReactToPrint
             trigger={() => {
               return (
-                <button className="px-5 py-2 flex justify-between text-white rounded-sm bg-blue-500">
+                <button className="px-5 py-2 flex items-center gap-2 text-white rounded-sm bg-blue-500">
                   Download <BsDownload />
                 </button>
               );
